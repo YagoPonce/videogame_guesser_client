@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import CreateVideogame from "./pages/Videogames/VideogameCreate";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
 
-        <Route
+        {/* <Route
           path="/profile"
           element={
             <IsPrivate>
@@ -42,6 +43,12 @@ function App() {
               <LoginPage />
             </IsAnon>
           }
+        /> */}
+        <Route
+        path="/create-videogame"
+        element={
+          <CreateVideogame />
+        }
         />
       </Routes>
     </div>
