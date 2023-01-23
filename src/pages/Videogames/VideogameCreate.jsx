@@ -61,13 +61,17 @@ function CreateVideogame() {
     try {
       const response = await uploadImageService(sendForm);
       setImageUrl(response.data.image);
-      console.log(response.data.image, "image url", imageUrl )
+      
       setIsUploadingImage(false);
     } catch (error) {
       console.log(error);
     }
   };
 
+
+  const chechImageUrl = () => {
+console.log(imageUrl)
+  }
   return (
     <div>
       <h1>Add new videogames!</h1>
@@ -138,6 +142,8 @@ function CreateVideogame() {
       <button type='form' onClick={addVideogame}>Añádelo!</button>
 
       </form>
+
+      <button onClick={chechImageUrl} >Comprovar</button>
     </div>
   );
 }
