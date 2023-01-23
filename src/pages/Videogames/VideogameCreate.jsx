@@ -61,6 +61,7 @@ function CreateVideogame() {
     try {
       const response = await uploadImageService(sendForm);
       setImageURL(response.data.image);
+      console.log(response.data.image)
       setIsUploadingImage(false);
     } catch (error) {
       console.log(error);
