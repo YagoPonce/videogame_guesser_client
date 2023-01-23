@@ -10,7 +10,7 @@ function CreateVideogame() {
   // name: String
   const [nameInput, setNameInput] = useState("");
   // imageUrl: String
-  const [imageURL, setImageURL] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   // release: Date
   const [releaseInput, setReleaseInput] = useState("");
   // description: String
@@ -38,7 +38,7 @@ function CreateVideogame() {
 
     const newVideogame = {
       name: nameInput,
-      imageUrl: imageURL,
+      imageUrl: imageUrl,
       release: releaseInput,
       description: descriptionInput,
       metacriticScore: metacriticScoreInput,
@@ -60,8 +60,8 @@ function CreateVideogame() {
 
     try {
       const response = await uploadImageService(sendForm);
-      setImageURL(response.data.image);
-      console.log(response.data.image)
+      setImageUrl(response.data.image);
+
       setIsUploadingImage(false);
     } catch (error) {
       console.log(error);
