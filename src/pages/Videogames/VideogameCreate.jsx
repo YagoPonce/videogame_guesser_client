@@ -38,11 +38,11 @@ function CreateVideogame() {
 
     const newVideogame = {
       name: nameInput,
-      image: imageURL,
+      imageUrl: imageURL,
       release: releaseInput,
       description: descriptionInput,
       metacriticScore: metacriticScoreInput,
-      developed: developerInput,
+      developer: developerInput,
       genre: genreInput,
     };
     try {
@@ -134,7 +134,7 @@ function CreateVideogame() {
         />
         <br />
 
-      <button onClick={addVideogame}>Añádelo!</button>
+      <button type='form' onClick={addVideogame}>Añádelo!</button>
 
       </form>
     </div>
