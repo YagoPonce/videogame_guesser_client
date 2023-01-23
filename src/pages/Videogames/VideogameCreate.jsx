@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createVideogameService } from "../../services/create.videogame.service";
 import { uploadImageService } from "../../services/upload.services";
 import { useNavigate } from "react-router-dom";
+import { MuiPicker } from "../../components/MuiPicker";
 
 function CreateVideogame() {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ function CreateVideogame() {
 
 
   const chechImageUrl = () => {
-console.log(imageUrl)
+    console.log(releaseInput)
   }
   return (
     <div>
@@ -95,12 +96,7 @@ console.log(imageUrl)
         <br />
 
         <label htmlFor="release">Fecha de salida</label>
-        <input
-          type="text"
-          name="release"
-          value={releaseInput}
-          onChange={handleReleaseChange}
-        />
+          <MuiPicker  setReleaseInput={ setReleaseInput } />
         <br />
 
         <label htmlFor="description">Descripción</label>
