@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createVideogameService } from "../../services/create.videogame.service";
+import { createVideogameService, genresService } from "../../services/create.videogame.service";
 import { uploadImageService } from "../../services/upload.services";
 import { useNavigate } from "react-router-dom";
 import { MuiPicker } from "../../components/MuiPicker";
@@ -20,8 +20,13 @@ function CreateVideogame() {
   const [metacriticScoreInput, setMetacriticScoreInput] = useState();
   // developer: String
   const [developerInput, setDeveloperInput] = useState();
+   // players: Number
+const [playersInput, setPlayersInput] = useState();
   // genre: String
   const [genreInput, setGenreInput] = useState();
+  const [ allGenres, setAllGenres ] = useState()
+
+
 
   //set up handlechanges for all the fields:
   const handleNameChange = (event) => setNameInput(event.target.value);
@@ -29,10 +34,29 @@ function CreateVideogame() {
   const handledescriptionChange = (event) => setDescriptionInput(event.target.value);
   const handleMetacriticScoreChange = (event) => setMetacriticScoreInput(event.target.value);
   const handleDeveloperChange = (event) => setDeveloperInput(event.target.value);
-  const handleGenreChange = (event) => setGenreInput(event.target.value);
-
+  const handlePlayersChange = (event) => setDeveloperInput(event.target.value);
+  const handleGenreChange = (event) => {
+    let value = Array.from(event.target.selectedOptions, option => option.value)
+    setGenreInput(value);
+  }
   const [isUploadingImage, setIsUploadingImage] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
+
+
+useEffect(() => {
+    getData()
+  }, [])
+
+  const getData = async (event) => {
+    
+    try {
+      const genresData = await genresService()
+      setAllGenres(genresData.data)
+      setIsFetching(false)
+    } catch(err) {
+      navigate("/error")
+    }
+  }
 
   const addVideogame = async (event) => {
     event.preventDefault();
@@ -44,6 +68,7 @@ function CreateVideogame() {
       description: descriptionInput,
       metacriticScore: metacriticScoreInput,
       developer: developerInput,
+      players: playersInput,
       genre: genreInput,
     };
     try {
@@ -73,6 +98,14 @@ function CreateVideogame() {
   const chechImageUrl = () => {
     console.log(releaseInput)
   }
+ if (isFetching === true) {
+    return (
+      <div>
+        <h1>Cargando...</h1>
+      </div> 
+     )
+    }
+
   return (
     <div>
       <h1>Add new videogames!</h1>
@@ -126,13 +159,26 @@ function CreateVideogame() {
         />
         <br />
 
-        <label htmlFor="genre">Género</label>
+        <label htmlFor="players">Nº Jugadores</label>
         <input
           type="text"
+          name="players"
+          value={playersInput}
+          onChange={handlePlayersChange}
+        />
+        <br />
+        <label htmlFor="genre">Género</label>
+        <select
+          multiple
           name="genre"
           value={genreInput}
-          onChange={handleGenreChange}
-        />
+          onChange={handleGenreChange}>
+          {allGenres.map((eachEl, index) =>{
+              return(
+              <option key={index} value={eachEl}>{eachEl}</option>
+              )
+            })}
+        </select>
         <br />
 
       <button type='form' onClick={addVideogame}>Añádelo!</button>
