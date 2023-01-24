@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createVideogameService, genresService } from "../../services/create.videogame.service";
-import { uploadImageService } from "../../services/upload.services";
+import { uploadImageService, uploadImageNamelessService } from "../../services/upload.services";
 import { useNavigate } from "react-router-dom";
 import { MuiPicker } from "../../components/MuiPicker";
 
@@ -11,7 +11,9 @@ function CreateVideogame() {
   // name: String
   const [nameInput, setNameInput] = useState("");
   // imageUrl: String
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");  
+  // imageNameless: String
+  const [imageNameless, setImageNameless] = useState("");
   // release: Date
   const [releaseInput, setReleaseInput] = useState("");
   // description: String
@@ -40,6 +42,7 @@ const [playersInput, setPlayersInput] = useState();
     setGenreInput(value);
   }
   const [isUploadingImage, setIsUploadingImage] = useState(false);
+  const [isUploadingImageNameless, setIsUploadingImageNameless] = useState(false);
   const [isFetching, setIsFetching] = useState(true);
 
 
@@ -94,6 +97,22 @@ useEffect(() => {
     }
   };
 
+  const handleUploadImageNameless = async (event) => {
+    setIsUploadingImageNameless(true);
+
+    const sendForm = new FormData();
+    sendForm.append("image", event.target.files[0]);
+
+    try {
+      const response = await uploadImageNamelessService(sendForm);
+      setImageNameless(response.data.image);
+      
+      setIsUploadingImageNameless(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   const chechImageUrl = () => {
     console.log(releaseInput)
@@ -117,6 +136,14 @@ useEffect(() => {
           id="formFile"
           name="image"
           onChange={handleUploadImage}
+        />
+        <br />
+        <label htmlFor="image"></label>
+        <input
+          type="file"
+          id="formFile"
+          name="image"
+          onChange={handleUploadImageNameless}
         />
         <br />
         <label htmlFor="name">Nombre</label>

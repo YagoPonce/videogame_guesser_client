@@ -4,6 +4,12 @@ const uploadImageService = (imageFile) => {
   return service.post("/uploader", imageFile)
 }
 
+const uploadImageNamelessService = (imageFile) => {
+  return service.post("/uploader", imageFile)
+}
+
 export {
-  uploadImageService
+  uploadImageService,
+  uploadImageNamelessService
+
 }
