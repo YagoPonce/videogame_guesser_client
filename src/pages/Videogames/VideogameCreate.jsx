@@ -67,6 +67,7 @@ useEffect(() => {
     const newVideogame = {
       name: nameInput,
       imageUrl: imageUrl,
+      imageNameless: imageNameless,
       release: releaseInput,
       description: descriptionInput,
       metacriticScore: metacriticScoreInput,
@@ -76,6 +77,7 @@ useEffect(() => {
     };
     try {
       await createVideogameService(newVideogame);
+      navigate("/")
     } catch (error) {
       console.log(error);
     }
@@ -101,7 +103,7 @@ useEffect(() => {
     setIsUploadingImageNameless(true);
 
     const sendForm = new FormData();
-    sendForm.append("imageNameless", event.target.files[1]);
+    sendForm.append("image", event.target.files[1]);
     console.log(event.target.files)
 
     try {
@@ -116,7 +118,7 @@ useEffect(() => {
 
 
   const chechImageUrl = () => {
-    console.log(releaseInput)
+    console.log("1", imageUrl, "2", imageNameless)
   }
  if (isFetching === true) {
     return (
