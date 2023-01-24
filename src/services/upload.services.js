@@ -5,7 +5,7 @@ const uploadImageService = (imageFile) => {
 }
 
 const uploadImageNamelessService = (imageFile) => {
-  return service.post("/uploader", imageFile)
+  return service.post("/uploader/nameless", imageFile)
 }
 
 export {

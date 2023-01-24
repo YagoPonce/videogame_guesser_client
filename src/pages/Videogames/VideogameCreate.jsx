@@ -86,7 +86,7 @@ useEffect(() => {
 
     const sendForm = new FormData();
     sendForm.append("image", event.target.files[0]);
-
+    console.log(event.target.files)
     try {
       const response = await uploadImageService(sendForm);
       setImageUrl(response.data.image);
@@ -102,6 +102,7 @@ useEffect(() => {
 
     const sendForm = new FormData();
     sendForm.append("imageNameless", event.target.files[1]);
+    console.log(event.target.files)
 
     try {
       const response = await uploadImageNamelessService(sendForm);
