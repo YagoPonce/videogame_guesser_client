@@ -101,7 +101,7 @@ useEffect(() => {
     setIsUploadingImageNameless(true);
 
     const sendForm = new FormData();
-    sendForm.append("image", event.target.files[0]);
+    sendForm.append("imageNameless", event.target.files[1]);
 
     try {
       const response = await uploadImageNamelessService(sendForm);
