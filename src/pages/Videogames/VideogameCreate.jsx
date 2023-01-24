@@ -102,7 +102,7 @@ useEffect(() => {
     setIsUploadingImageNameless(true);
 
     const sendForm = new FormData();
-    sendForm.append("image", event.target.files[1]);
+    sendForm.append("image", event.target.files[0]);
     console.log(event.target.files)
 
     try {
