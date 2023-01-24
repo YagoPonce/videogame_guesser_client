@@ -7,7 +7,7 @@ const createVideogameService = (newVideogame) => {
 
 //send information of utils "genres" from BE
 const genresService = () => {
-    return service.get("/videogames/genre")
+    return service.get("/videogames/genres")
 }
 
 
