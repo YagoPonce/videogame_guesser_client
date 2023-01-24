@@ -77,7 +77,6 @@ useEffect(() => {
     };
     try {
       await createVideogameService(newVideogame);
-      navigate("/")
     } catch (error) {
       console.log(error);
     }
