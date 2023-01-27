@@ -1,3 +1,40 @@
 .App {
   text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
+.form {
+  display: flex;
+  width: 600px;
+  margin: 0 auto;
+  justify-content:flex-start;
+  text-align: start;
+  align-items: flex-start;
+}
+
+.form input {
+  width: 90%;
+  height: 30px;
+  margin: 0.6rem;
+  border: 0;
+}
+
+.inputs {
+border-radius: 5px;
+background-color: rgb(235, 244, 252);
+  }
+
+.inputs:hover {
+  background-color: #def;
+}
+
+.descriptionInput {
+  width: 500px;
+
+}
+
+.button {
+  width: 150px;
+  height: 600px;
+}
+

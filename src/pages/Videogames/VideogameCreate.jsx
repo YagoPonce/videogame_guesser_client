@@ -46,20 +46,20 @@ const [playersInput, setPlayersInput] = useState();
   const [isFetching, setIsFetching] = useState(true);
 
 
-useEffect(() => {
-    getData()
-  }, [])
+// useEffect(() => {
+//     getData()
+//   }, [])
 
-  const getData = async (event) => {
+//   const getData = async (event) => {
     
-    try {
-      const genresData = await genresService()
-      setAllGenres(genresData.data)
-      setIsFetching(false)
-    } catch(err) {
-      navigate("/error")
-    }
-  }
+//     try {
+//       const genresData = await genresService()
+//       setAllGenres(genresData.data)
+//       setIsFetching(false)
+//     } catch(err) {
+//       navigate("/error")
+//     }
+//   }
 
   const addVideogame = async (event) => {
     event.preventDefault();
@@ -120,20 +120,20 @@ useEffect(() => {
   const chechImageUrl = () => {
     console.log("1", imageUrl, "2", imageNameless)
   }
- if (isFetching === true) {
-    return (
-      <div>
-        <h1>Cargando...</h1>
-      </div> 
-     )
-    }
+//  if (isFetching === true) {
+//     return (
+//       <div>
+//         <h1>Cargando...</h1>
+//       </div> 
+//      )
+//     }
 
   return (
     <div>
       <h1>Add new videogames!</h1>
-
-      <form>
-        <label htmlFor="image"></label>
+      <form className="form">
+      <div>
+        <label htmlFor="image">Portada</label>
         <input
           type="file"
           id="formFile"
@@ -141,7 +141,7 @@ useEffect(() => {
           onChange={handleUploadImage}
         />
         <br />
-        <label htmlFor="image"></label>
+        <label htmlFor="image">Portada sin título</label>
         <input
           type="file"
           id="formFile"
@@ -153,6 +153,8 @@ useEffect(() => {
         <input
           type="text"
           name="name"
+          className="inputs"
+
           value={nameInput}
           onChange={handleNameChange}
         />
@@ -162,10 +164,11 @@ useEffect(() => {
           <MuiPicker  setReleaseInput={ setReleaseInput } />
         <br />
 
-        <label htmlFor="description">Descripción</label>
+        <label htmlFor="description" >Descripción</label>
         <input
           type="text"
           name="description"
+          className="descriptionInput inputs"
           value={descriptionInput}
           onChange={handledescriptionChange}
         />
@@ -175,6 +178,8 @@ useEffect(() => {
         <input
           type="text"
           name="metacriticScore"
+          className="inputs"
+
           value={metacriticScoreInput}
           onChange={handleMetacriticScoreChange}
         />
@@ -184,6 +189,8 @@ useEffect(() => {
         <input
           type="text"
           name="developer"
+          className="inputs"
+
           value={developerInput}
           onChange={handleDeveloperChange}
         />
@@ -193,6 +200,8 @@ useEffect(() => {
         <input
           type="text"
           name="players"
+          className="inputs"
+
           value={playersInput}
           onChange={handlePlayersChange}
         />
@@ -201,21 +210,24 @@ useEffect(() => {
         <select
           multiple
           name="genre"
+          className="inputs"
+
           value={genreInput}
           onChange={handleGenreChange}>
-          {allGenres.map((eachEl, index) =>{
+          {/* {allGenres.map((eachEl, index) =>{
               return(
               <option key={index} value={eachEl}>{eachEl}</option>
               )
-            })}
+            })} */}
         </select>
         <br />
-
-      <button type='form' onClick={addVideogame}>Añádelo!</button>
-
+       </div>
+        
+              <div>
+      <button type='form' className="button" onClick={addVideogame}>Añádelo!</button>
+</div>
       </form>
 
-      <button onClick={chechImageUrl} >Comprovar</button>
     </div>
   );
 }
