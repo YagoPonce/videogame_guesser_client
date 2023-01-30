@@ -36,7 +36,7 @@ const [playersInput, setPlayersInput] = useState();
   const handledescriptionChange = (event) => setDescriptionInput(event.target.value);
   const handleMetacriticScoreChange = (event) => setMetacriticScoreInput(event.target.value);
   const handleDeveloperChange = (event) => setDeveloperInput(event.target.value);
-  const handlePlayersChange = (event) => setDeveloperInput(event.target.value);
+  const handlePlayersChange = (event) => setPlayersInput(event.target.value);
   const handleGenreChange = (event) => {
     let value = Array.from(event.target.selectedOptions, option => option.value)
     setGenreInput(value);
