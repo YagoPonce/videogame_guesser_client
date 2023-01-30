@@ -46,20 +46,20 @@ const [playersInput, setPlayersInput] = useState();
   const [isFetching, setIsFetching] = useState(true);
 
 
-// useEffect(() => {
-//     getData()
-//   }, [])
+useEffect(() => {
+    getData()
+  }, [])
 
-//   const getData = async (event) => {
+  const getData = async (event) => {
     
-//     try {
-//       const genresData = await genresService()
-//       setAllGenres(genresData.data)
-//       setIsFetching(false)
-//     } catch(err) {
-//       navigate("/error")
-//     }
-//   }
+    try {
+      const genresData = await genresService()
+      setAllGenres(genresData.data)
+      setIsFetching(false)
+    } catch(err) {
+      navigate("/error")
+    }
+  }
 
   const addVideogame = async (event) => {
     event.preventDefault();
@@ -117,16 +117,13 @@ const [playersInput, setPlayersInput] = useState();
   };
 
 
-  const chechImageUrl = () => {
-    console.log("1", imageUrl, "2", imageNameless)
-  }
-//  if (isFetching === true) {
-//     return (
-//       <div>
-//         <h1>Cargando...</h1>
-//       </div> 
-//      )
-//     }
+ if (isFetching === true) {
+    return (
+      <div>
+        <h1>Cargando...</h1>
+      </div> 
+     )
+    }
 
   return (
     <div>
@@ -214,11 +211,11 @@ const [playersInput, setPlayersInput] = useState();
 
           value={genreInput}
           onChange={handleGenreChange}>
-          {/* {allGenres.map((eachEl, index) =>{
+          {allGenres.map((eachEl, index) =>{
               return(
               <option key={index} value={eachEl}>{eachEl}</option>
               )
-            })} */}
+            })}
         </select>
         <br />
        </div>
