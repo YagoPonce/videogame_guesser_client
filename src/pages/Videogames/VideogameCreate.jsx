@@ -173,7 +173,7 @@ useEffect(() => {
 
         <label htmlFor="metacriticScore">Puntuación en metacritic</label>
         <input
-          type="text"
+          type="number"
           name="metacriticScore"
           className="inputs"
 
@@ -195,7 +195,7 @@ useEffect(() => {
 
         <label htmlFor="players">Nº Jugadores</label>
         <input
-          type="text"
+          type="number"
           name="players"
           className="inputs"
 
